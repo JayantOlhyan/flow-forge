@@ -303,7 +303,7 @@ def main():
                 'timestamp': datetime.now().isoformat()
             },
             'results': tester.test_results
-        }, indent=2)
+        }, f, indent=2)
     
     return 0 if success else 1
 
