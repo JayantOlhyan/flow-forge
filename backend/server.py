@@ -214,29 +214,26 @@ async def create_automation(data: AutomationCreate, current_user: dict = Depends
     return {k: v for k, v in doc.items() if k != "_id"}
 
 @api_router.get("/automations")
-async def get_automations(authorization: str = None):
-    user = await get_current_user(authorization)
-    automations = await db.automations.find({"user_id": user["id"]}, {"_id": 0}).sort("created_at", -1).to_list(100)
+async def get_automations(current_user: dict = Depends(get_current_user)):
+    automations = await db.automations.find({"user_id": current_user["id"]}, {"_id": 0}).sort("created_at", -1).to_list(100)
     return automations
 
 @api_router.put("/automations/{auto_id}/toggle")
-async def toggle_automation(auto_id: str, authorization: str = None):
-    user = await get_current_user(authorization)
-    auto = await db.automations.find_one({"id": auto_id, "user_id": user["id"]}, {"_id": 0})
+async def toggle_automation(auto_id: str, current_user: dict = Depends(get_current_user)):
+    auto = await db.automations.find_one({"id": auto_id, "user_id": current_user["id"]}, {"_id": 0})
     if not auto:
         raise HTTPException(status_code=404, detail="Automation not found")
     new_status = "paused" if auto["status"] == "active" else "active"
     await db.automations.update_one({"id": auto_id}, {"$set": {"status": new_status}})
-    await log_activity(user["id"], "automation_toggled", f"{auto['name']} → {new_status}")
+    await log_activity(current_user["id"], "automation_toggled", f"{auto['name']} → {new_status}")
     return {"status": new_status}
 
 @api_router.delete("/automations/{auto_id}")
-async def delete_automation(auto_id: str, authorization: str = None):
-    user = await get_current_user(authorization)
-    result = await db.automations.delete_one({"id": auto_id, "user_id": user["id"]})
+async def delete_automation(auto_id: str, current_user: dict = Depends(get_current_user)):
+    result = await db.automations.delete_one({"id": auto_id, "user_id": current_user["id"]})
     if result.deleted_count == 0:
         raise HTTPException(status_code=404, detail="Automation not found")
-    await log_activity(user["id"], "automation_deleted", f"Deleted automation {auto_id}")
+    await log_activity(current_user["id"], "automation_deleted", f"Deleted automation {auto_id}")
     return {"status": "deleted"}
 
 # ── Dashboard stats ─────────────────────────────────────
