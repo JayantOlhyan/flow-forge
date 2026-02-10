@@ -239,9 +239,8 @@ async def delete_automation(auto_id: str, current_user: dict = Depends(get_curre
 # ── Dashboard stats ─────────────────────────────────────
 
 @api_router.get("/dashboard/stats")
-async def get_dashboard_stats(authorization: str = None):
-    user = await get_current_user(authorization)
-    automations = await db.automations.find({"user_id": user["id"]}, {"_id": 0}).to_list(100)
+async def get_dashboard_stats(current_user: dict = Depends(get_current_user)):
+    automations = await db.automations.find({"user_id": current_user["id"]}, {"_id": 0}).to_list(100)
     active_count = sum(1 for a in automations if a.get("status") == "active")
     total_tasks = sum(a.get("tasks_run", 0) for a in automations)
     total_time_saved = sum(a.get("time_saved_minutes", 0) for a in automations)
