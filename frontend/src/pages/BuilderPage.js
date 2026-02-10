@@ -85,7 +85,7 @@ export default function BuilderPage() {
     return catMatch && searchMatch;
   });
 
-  const useTemplate = async (template) => {
+  const activateTemplate = async (template) => {
     try {
       await axios.post(`${API}/automations`, {
         name: template.name, description: template.description,
