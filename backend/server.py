@@ -274,13 +274,12 @@ async def get_activity(current_user: dict = Depends(get_current_user)):
 # ── AI Suggest ──────────────────────────────────────────
 
 @api_router.post("/ai/suggest")
-async def ai_suggest(data: AIRequest, authorization: str = None):
-    user = await get_current_user(authorization)
+async def ai_suggest(data: AIRequest, current_user: dict = Depends(get_current_user)):
     try:
         from emergentintegrations.llm.chat import LlmChat, UserMessage
         chat = LlmChat(
             api_key=EMERGENT_LLM_KEY,
-            session_id=f"flowforge-{user['id']}-{uuid.uuid4()}",
+            session_id=f"flowforge-{current_user['id']}-{uuid.uuid4()}",
             system_message="""You are Flow-Forge AI, an automation assistant. When the user describes a task they want automated, respond with a JSON object containing:
 {
   "name": "Short automation name",
@@ -304,7 +303,7 @@ Only respond with valid JSON. No markdown, no extra text."""
             clean = clean.rsplit("```", 1)[0]
         
         parsed = json.loads(clean)
-        await log_activity(user["id"], "ai_suggestion", f"AI suggested: {parsed.get('name', 'Unknown')}")
+        await log_activity(current_user["id"], "ai_suggestion", f"AI suggested: {parsed.get('name', 'Unknown')}")
         return {"suggestion": parsed, "raw": response}
     except Exception as e:
         logger.error(f"AI suggestion error: {e}")
