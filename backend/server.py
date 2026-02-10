@@ -144,9 +144,8 @@ async def login(data: UserLogin):
     return {"token": token, "user": {k: v for k, v in user.items() if k != "password"}}
 
 @api_router.get("/auth/me")
-async def get_me(authorization: str = None):
-    user = await get_current_user(authorization)
-    return {k: v for k, v in user.items() if k != "password"}
+async def get_me(current_user: dict = Depends(get_current_user)):
+    return {k: v for k, v in current_user.items() if k != "password"}
 
 # ── Onboarding ──────────────────────────────────────────
 
