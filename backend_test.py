@@ -39,14 +39,14 @@ class FlowForgeAPITester:
             print(f"   Response keys: {keys}")
         print()
 
-    def run_test(self, name, method, endpoint, expected_status, data=None, headers=None):
+    def run_test(self, name, method, endpoint, expected_status, data=None, headers=None, use_auth=True):
         """Run a single API test"""
         url = f"{self.base_url}{endpoint}"
         test_headers = {'Content-Type': 'application/json'}
         
         if headers:
             test_headers.update(headers)
-        elif self.token:
+        elif use_auth and self.token:
             test_headers['Authorization'] = f'Bearer {self.token}'
 
         try:
