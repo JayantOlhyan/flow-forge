@@ -120,23 +120,41 @@ class FlowForgeAPITester:
         return success
 
     def test_get_current_user(self):
-        """Test getting current user"""
+        """Test getting current user with different auth methods"""
         if not self.token:
             self.log_test_result("Get Current User", False, None, None, "No token available")
             return False
         
-        # Test with explicit header
-        success, response = self.run_test("Get Current User", "GET", "/auth/me", 200)
-        if not success:
-            # Try with different header format
-            url = f"{self.base_url}/auth/me"
-            headers = {'Authorization': f'Bearer {self.token}', 'Content-Type': 'application/json'}
-            try:
-                resp = requests.get(url, headers=headers, timeout=10)
-                print(f"   Debug: Status {resp.status_code}, Response: {resp.text[:200]}")
-            except Exception as e:
-                print(f"   Debug error: {e}")
-        return success
+        # Try method 1: Header (standard)
+        success, response = self.run_test("Get Current User (Header)", "GET", "/auth/me", 200)
+        if success:
+            return True
+            
+        # Try method 2: Query parameter
+        url = f"{self.base_url}/auth/me?authorization=Bearer%20{self.token}"
+        try:
+            resp = requests.get(url, headers={'Content-Type': 'application/json'}, timeout=10)
+            if resp.status_code == 200:
+                self.log_test_result("Get Current User (Query)", True, resp.status_code, resp.json())
+                return True
+            else:
+                print(f"   Query method failed: {resp.status_code} - {resp.text[:100]}")
+        except Exception as e:
+            print(f"   Query method error: {e}")
+        
+        # Try method 3: Different header name
+        try:
+            headers = {'authorization': f'Bearer {self.token}', 'Content-Type': 'application/json'}
+            resp = requests.get(f"{self.base_url}/auth/me", headers=headers, timeout=10)
+            if resp.status_code == 200:
+                self.log_test_result("Get Current User (Lowercase)", True, resp.status_code, resp.json())
+                return True
+            else:
+                print(f"   Lowercase header failed: {resp.status_code} - {resp.text[:100]}")
+        except Exception as e:
+            print(f"   Lowercase header error: {e}")
+        
+        return False
 
     def test_onboarding(self):
         """Test user onboarding"""
