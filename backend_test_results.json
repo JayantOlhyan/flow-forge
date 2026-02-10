@@ -1,0 +1,88 @@
+{
+  "summary": {
+    "total_tests": 11,
+    "passed": 4,
+    "failed": 7,
+    "success_rate": "36.4%",
+    "timestamp": "2026-02-10T18:02:22.946549"
+  },
+  "results": [
+    {
+      "test": "Health Check",
+      "success": true,
+      "status_code": 200,
+      "error": null,
+      "timestamp": "2026-02-10T18:02:21.973400"
+    },
+    {
+      "test": "Get Templates",
+      "success": true,
+      "status_code": 200,
+      "error": null,
+      "timestamp": "2026-02-10T18:02:22.015307"
+    },
+    {
+      "test": "Login Existing User",
+      "success": true,
+      "status_code": 200,
+      "error": null,
+      "timestamp": "2026-02-10T18:02:22.284799"
+    },
+    {
+      "test": "Register New User",
+      "success": true,
+      "status_code": 200,
+      "error": null,
+      "timestamp": "2026-02-10T18:02:22.579722"
+    },
+    {
+      "test": "Get Current User",
+      "success": false,
+      "status_code": 401,
+      "error": "Expected 200, got 401",
+      "timestamp": "2026-02-10T18:02:22.629699"
+    },
+    {
+      "test": "User Onboarding",
+      "success": false,
+      "status_code": 401,
+      "error": "Expected 200, got 401",
+      "timestamp": "2026-02-10T18:02:22.727041"
+    },
+    {
+      "test": "Dashboard Stats",
+      "success": false,
+      "status_code": 401,
+      "error": "Expected 200, got 401",
+      "timestamp": "2026-02-10T18:02:22.777499"
+    },
+    {
+      "test": "Create Automation",
+      "success": false,
+      "status_code": 401,
+      "error": "Expected 200, got 401",
+      "timestamp": "2026-02-10T18:02:22.814214"
+    },
+    {
+      "test": "Get Automations",
+      "success": false,
+      "status_code": 401,
+      "error": "Expected 200, got 401",
+      "timestamp": "2026-02-10T18:02:22.850613"
+    },
+    {
+      "test": "AI Suggestion",
+      "success": false,
+      "status_code": 401,
+      "error": "Expected 200, got 401",
+      "timestamp": "2026-02-10T18:02:22.899301"
+    },
+    {
+      "test": "Activity Log",
+      "success": false,
+      "status_code": 401,
+      "error": "Expected 200, got 401",
+      "timestamp": "2026-02-10T18:02:22.945435"
+    }
+  ]
+}
