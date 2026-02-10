@@ -208,7 +208,7 @@ export default function BuilderPage() {
                       <p className="text-xs text-slate-500 mb-4 line-clamp-2">{t.description}</p>
                       <div className="flex items-center justify-between">
                         <span className="text-xs text-slate-400"><Clock className="w-3 h-3 inline mr-1" />Saves ~{t.time_saved}min/week</span>
-                        <Button size="sm" onClick={() => useTemplate(t)} className="h-7 px-3 text-xs bg-[#0066FF] hover:bg-[#0052CC] text-white rounded" data-testid={`use-template-${t.id}`}>
+                        <Button size="sm" onClick={() => activateTemplate(t)} className="h-7 px-3 text-xs bg-[#0066FF] hover:bg-[#0052CC] text-white rounded" data-testid={`use-template-${t.id}`}>
                           Use this <ArrowRight className="w-3 h-3 ml-1" />
                         </Button>
                       </div>
