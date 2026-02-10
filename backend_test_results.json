@@ -1,10 +1,10 @@
 {
   "summary": {
-    "total_tests": 11,
-    "passed": 4,
-    "failed": 7,
-    "success_rate": "36.4%",
-    "timestamp": "2026-02-10T18:02:22.946549"
+    "total_tests": 13,
+    "passed": 13,
+    "failed": 0,
+    "success_rate": "100.0%",
+    "timestamp": "2026-02-10T18:04:48.208225"
   },
   "results": [
     {
@@ -12,77 +12,91 @@
       "success": true,
       "status_code": 200,
       "error": null,
-      "timestamp": "2026-02-10T18:02:21.973400"
+      "timestamp": "2026-02-10T18:04:41.263201"
     },
     {
       "test": "Get Templates",
       "success": true,
       "status_code": 200,
       "error": null,
-      "timestamp": "2026-02-10T18:02:22.015307"
+      "timestamp": "2026-02-10T18:04:41.304509"
     },
     {
       "test": "Login Existing User",
       "success": true,
       "status_code": 200,
       "error": null,
-      "timestamp": "2026-02-10T18:02:22.284799"
+      "timestamp": "2026-02-10T18:04:41.597869"
     },
     {
       "test": "Register New User",
       "success": true,
       "status_code": 200,
       "error": null,
-      "timestamp": "2026-02-10T18:02:22.579722"
+      "timestamp": "2026-02-10T18:04:41.870293"
     },
     {
-      "test": "Get Current User",
-      "success": false,
-      "status_code": 401,
-      "error": "Expected 200, got 401",
-      "timestamp": "2026-02-10T18:02:22.629699"
+      "test": "Get Current User (Header)",
+      "success": true,
+      "status_code": 200,
+      "error": null,
+      "timestamp": "2026-02-10T18:04:41.913465"
     },
     {
       "test": "User Onboarding",
-      "success": false,
-      "status_code": 401,
-      "error": "Expected 200, got 401",
-      "timestamp": "2026-02-10T18:02:22.727041"
+      "success": true,
+      "status_code": 200,
+      "error": null,
+      "timestamp": "2026-02-10T18:04:41.989485"
     },
     {
       "test": "Dashboard Stats",
-      "success": false,
-      "status_code": 401,
-      "error": "Expected 200, got 401",
-      "timestamp": "2026-02-10T18:02:22.777499"
+      "success": true,
+      "status_code": 200,
+      "error": null,
+      "timestamp": "2026-02-10T18:04:42.039307"
     },
     {
       "test": "Create Automation",
-      "success": false,
-      "status_code": 401,
-      "error": "Expected 200, got 401",
-      "timestamp": "2026-02-10T18:02:22.814214"
+      "success": true,
+      "status_code": 200,
+      "error": null,
+      "timestamp": "2026-02-10T18:04:42.119954"
     },
     {
       "test": "Get Automations",
-      "success": false,
-      "status_code": 401,
-      "error": "Expected 200, got 401",
-      "timestamp": "2026-02-10T18:02:22.850613"
+      "success": true,
+      "status_code": 200,
+      "error": null,
+      "timestamp": "2026-02-10T18:04:42.164190"
+    },
+    {
+      "test": "Toggle Automation",
+      "success": true,
+      "status_code": 200,
+      "error": null,
+      "timestamp": "2026-02-10T18:04:42.218225"
+    },
+    {
+      "test": "Delete Automation",
+      "success": true,
+      "status_code": 200,
+      "error": null,
+      "timestamp": "2026-02-10T18:04:42.260733"
     },
     {
       "test": "AI Suggestion",
-      "success": false,
-      "status_code": 401,
-      "error": "Expected 200, got 401",
-      "timestamp": "2026-02-10T18:02:22.899301"
+      "success": true,
+      "status_code": 200,
+      "error": null,
+      "timestamp": "2026-02-10T18:04:48.130438"
     },
     {
       "test": "Activity Log",
-      "success": false,
-      "status_code": 401,
-      "error": "Expected 200, got 401",
-      "timestamp": "2026-02-10T18:02:22.945435"
+      "success": true,
+      "status_code": 200,
+      "error": null,
+      "timestamp": "2026-02-10T18:04:48.207241"
     }
   ]
 }
