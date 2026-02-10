@@ -81,7 +81,7 @@ class FlowForgeAPITester:
 
     def test_templates_endpoint(self):
         """Test templates endpoint (public)"""
-        success, response = self.run_test("Get Templates", "GET", "/templates", 200, headers={})
+        success, response = self.run_test("Get Templates", "GET", "/templates", 200, use_auth=False)
         if success and isinstance(response, list) and len(response) > 0:
             print(f"   Found {len(response)} templates")
         return success
@@ -94,7 +94,7 @@ class FlowForgeAPITester:
             "/auth/login",
             200,
             data={"email": email, "password": password},
-            headers={}
+            use_auth=False
         )
         if success and 'token' in response:
             self.token = response['token']
@@ -115,7 +115,7 @@ class FlowForgeAPITester:
                 "email": test_email,
                 "password": "testpass123"
             },
-            headers={}
+            use_auth=False
         )
         return success
 
