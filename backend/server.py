@@ -184,8 +184,7 @@ async def get_templates(category: Optional[str] = None):
 # ── Automations CRUD ────────────────────────────────────
 
 @api_router.post("/automations")
-async def create_automation(data: AutomationCreate, authorization: str = None):
-    user = await get_current_user(authorization)
+async def create_automation(data: AutomationCreate, current_user: dict = Depends(get_current_user)):
     auto_id = str(uuid.uuid4())
     
     # If from template, get template data
@@ -207,11 +206,11 @@ async def create_automation(data: AutomationCreate, authorization: str = None):
         "nodes": data.nodes or [],
         "tasks_run": 0,
         "time_saved_minutes": template_data.get("time_saved_minutes", 10),
-        "user_id": user["id"],
+        "user_id": current_user["id"],
         "created_at": datetime.now(timezone.utc).isoformat(),
     }
     await db.automations.insert_one(doc)
-    await log_activity(user["id"], "automation_created", f"Created: {data.name}")
+    await log_activity(current_user["id"], "automation_created", f"Created: {data.name}")
     return {k: v for k, v in doc.items() if k != "_id"}
 
 @api_router.get("/automations")
