@@ -1,0 +1,161 @@
+{
+  "identity": {
+    "name": "Flow-Forge",
+    "philosophy": "Invisible Power",
+    "tone": "Ultra-clean, Minimalist, Professional, Trustworthy, Silent Assistant",
+    "core_metaphor": "Notion meets Stripe - The interface should recede, letting the work stand out."
+  },
+  "typography": {
+    "headings": {
+      "font_family": "Manrope",
+      "weights": [
+        "600",
+        "700"
+      ],
+      "usage": "Use Manrope for all section titles, hero headings, and metric numbers. Letter spacing should be tight (-0.02em) for large text."
+    },
+    "body": {
+      "font_family": "Inter",
+      "weights": [
+        "400",
+        "500"
+      ],
+      "usage": "Use Inter for all paragraph text, interface labels, and data tables. Prioritize readability with relaxed line height (1.6)."
+    },
+    "code": {
+      "font_family": "JetBrains Mono",
+      "usage": "For automation IDs, API keys, or logic snippets."
+    }
+  },
+  "colors": {
+    "primary": {
+      "name": "Electric Blue",
+      "value": "#0066FF",
+      "usage": "Primary buttons, active states, key links, and brand moments. Use sparingly to maintain impact."
+    },
+    "neutrals": {
+      "bg_main": "#FFFFFF",
+      "bg_secondary": "#F8FAFC",
+      "border_subtle": "#E2E8F0",
+      "border_strong": "#CBD5E1",
+      "text_main": "#0F172A",
+      "text_secondary": "#64748B",
+      "text_tertiary": "#94A3B8"
+    },
+    "status": {
+      "success": "#10B981",
+      "warning": "#F59E0B",
+      "error": "#EF4444",
+      "inactive": "#E2E8F0"
+    },
+    "gradients": "NONE. Do not use gradients. Stick to solid, confident colors."
+  },
+  "layout": {
+    "spacing_scale": {
+      "base": "4px",
+      "container_padding": "p-8 md:p-12 lg:p-16",
+      "section_gap": "gap-12 md:gap-24",
+      "component_gap": "gap-4 md:gap-6"
+    },
+    "grid_system": {
+      "marketing": "Use the 'Tetris' grid (MODE A) for the landing page. Mix wide hero sections with smaller feature blocks.",
+      "dashboard": "Use the 'Bento' grid (MODE B) for the Command Center. High density but with breathing room."
+    },
+    "containers": {
+      "card_style": "Flat white background, 1px solid border (slate-200), minimal shadow (shadow-sm). No heavy elevation.",
+      "radius": "rounded-lg (8px) for small elements, rounded-xl (12px) for cards/modals."
+    }
+  },
+  "visual_enhancers": {
+    "icons": {
+      "library": "Lucide React",
+      "style": "Stroke width 1.5px or 2px. Small sizes (16px-20px) for UI, larger (24px-32px) for features.",
+      "brand_icons": "Use 'react-icons/si' (Simple Icons) for integration logos (Slack, Gmail, etc.)."
+    },
+    "dots": {
+      "usage": "Use colored dots (w-2 h-2 rounded-full) to indicate status (Running, Paused, Error) instead of text labels where possible."
+    },
+    "lines": {
+      "usage": "Use subtle vertical or horizontal lines (border-slate-100) to connect steps in the automation builder."
+    }
+  },
+  "components": {
+    "buttons": {
+      "primary": "bg-primary text-white hover:bg-primary/90 rounded-md font-medium px-6 py-2 transition-all active:scale-95",
+      "secondary": "bg-white border border-input hover:bg-slate-50 text-slate-900 rounded-md font-medium px-6 py-2 transition-all",
+      "ghost": "hover:bg-slate-100 text-slate-600 hover:text-slate-900 rounded-md px-4 py-2"
+    },
+    "inputs": {
+      "style": "bg-white border-input ring-offset-background focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-md h-10 px-3"
+    },
+    "cards": {
+      "marketing": "p-8 border border-slate-200 bg-white rounded-xl hover:border-primary/20 transition-colors",
+      "dashboard": "p-6 border border-slate-200 bg-white rounded-xl flex flex-col justify-between h-full"
+    },
+    "automation_builder": {
+      "node": "bg-white border border-slate-200 shadow-sm rounded-lg p-4 w-64 flex items-center gap-3 hover:border-primary transition-colors cursor-pointer",
+      "connector": "border-l-2 border-slate-200 h-8 ml-8 my-1"
+    }
+  },
+  "motion": {
+    "philosophy": "Micro-interactions only. No sweeping page transitions.",
+    "hover": "transition-all duration-200 ease-in-out",
+    "list_items": "Staggered fade-in for lists in the dashboard.",
+    "modal": "Quick scale-in (95% to 100%) and fade-in."
+  },
+  "accessibility": {
+    "contrast": "Ensure text is Slate-900 or Slate-600 on white backgrounds. Avoid Slate-400 for body text.",
+    "focus_states": "Visible focus rings (ring-2 ring-primary ring-offset-2) are mandatory for keyboard users."
+  },
+  "image_urls": {
+    "hero_placeholder": "https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&q=80&w=2000",
+    "office_minimal": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=2000",
+    "logos": "Use react-icons/si for: SiSlack, SiGmail, SiHubspot, SiNotion, SiTrello, SiSalesforce."
+  },
+  "pages_structure": {
+    "landing": [
+      "Hero: 'Automate your work, invisibly.' Simple centered H1, subtext, two buttons (Start Free, View Demo).",
+      "Social Proof: 'Trusted by modern teams' with grayscale brand icons.",
+      "Features Grid: 3-column bento grid showcasing 'Quick Start', 'Visual Builder', 'AI Assistant'.",
+      "How it Works: Minimal step-by-step vertical flow.",
+      "CTA: 'Reclaim your time' section."
+    ],
+    "dashboard": [
+      "Header: Simple logo left, Search center, Profile right.",
+      "Welcome: 'Good morning, Alex. You've saved 15 hours this week.'",
+      "Stats Row: 3 cards (Active Flows, Tasks Run, Time Saved).",
+      "Recent Automations: List view with status dots and toggle switches."
+    ],
+    "builder": [
+      "Canvas: Infinite dot-grid background (slate-50).",
+      "Sidebar: Draggable triggers and actions.",
+      "Floating Controls: Save, Test, Publish buttons top-right."
+    ]
+  },
+  "instructions_to_main_agent": [
+    "Install 'lucide-react' and 'react-icons' immediately.",
+    "Install 'clsx' and 'tailwind-merge' for class handling.",
+    "Use 'Manrope' from Google Fonts via @import in index.css.",
+    "Ensure all dashboard widgets stretch to fill height in grid rows (h-full).",
+    "Do NOT use gradients. Use solid colors and borders.",
+    "Keep shadows very subtle: 'shadow-sm' or 'shadow-md' at most.",
+    "For the 'AI Assistant', use a clean input field with a 'sparkle' icon."
+  ],
+  "UNIVERSAL_GUIDELINES": [
+    "You tend to converge toward generic, 'on distribution' outputs. In frontend design, this creates what users call the 'AI slop' aesthetic. Avoid this: make creative, distinctive frontends that surprise and delight.",
+    "Don't make generic centered layouts, simplistic gradients, and uniform styling.",
+    "Create depth through layered design elements with z-index hierarchy.",
+    "Use glass-morphism effects with backdrop filters (12-24px blur) ONLY for sticky headers/overlays.",
+    "You MUST NOT apply universal transition. Eg: transition: all. This results in breaking transforms. Always add transitions for specific interactive elements like button, input excluding transforms.",
+    "You MUST NOT center align the app container, ie do not add .App { text-align: center; } in the css file. This disrupts the human natural reading flow of text.",
+    "Always use modern button styles like pill-shaped, or sharp button with interaction animations & color relevant to the app style.",
+    "NEVER: use AI assistant Emoji characters like 🤖🧠 etc for icons. Use Lucide icons.",
+    "Every interaction needs micro-animations - hover states, transitions. Static = dead.",
+    "Use 2-3x more spacing than feels comfortable. Cramped designs look cheap.",
+    "Main agent relies on these image URLs. Missing categories = main agent will use placeholder text which is FORBIDDEN.",
+    "Prioritize using pre-existing components from src/components/ui when applicable.",
+    "Components MUST use named exports (export const ComponentName = ...).",
+    "Pages MUST use default exports (export default function PageName() {...}).",
+    "Use 'sonner' for toasts."
+  ]
+}
