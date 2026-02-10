@@ -267,9 +267,8 @@ async def log_activity(user_id: str, action: str, detail: str):
     await db.activity_log.insert_one(doc)
 
 @api_router.get("/activity")
-async def get_activity(authorization: str = None):
-    user = await get_current_user(authorization)
-    logs = await db.activity_log.find({"user_id": user["id"]}, {"_id": 0}).sort("timestamp", -1).to_list(50)
+async def get_activity(current_user: dict = Depends(get_current_user)):
+    logs = await db.activity_log.find({"user_id": current_user["id"]}, {"_id": 0}).sort("timestamp", -1).to_list(50)
     return logs
 
 # ── AI Suggest ──────────────────────────────────────────
