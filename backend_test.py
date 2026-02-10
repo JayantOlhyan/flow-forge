@@ -125,7 +125,18 @@ class FlowForgeAPITester:
             self.log_test_result("Get Current User", False, None, None, "No token available")
             return False
         
-        return self.run_test("Get Current User", "GET", "/auth/me", 200)[0]
+        # Test with explicit header
+        success, response = self.run_test("Get Current User", "GET", "/auth/me", 200)
+        if not success:
+            # Try with different header format
+            url = f"{self.base_url}/auth/me"
+            headers = {'Authorization': f'Bearer {self.token}', 'Content-Type': 'application/json'}
+            try:
+                resp = requests.get(url, headers=headers, timeout=10)
+                print(f"   Debug: Status {resp.status_code}, Response: {resp.text[:200]}")
+            except Exception as e:
+                print(f"   Debug error: {e}")
+        return success
 
     def test_onboarding(self):
         """Test user onboarding"""
