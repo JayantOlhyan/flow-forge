@@ -150,13 +150,12 @@ async def get_me(current_user: dict = Depends(get_current_user)):
 # ── Onboarding ──────────────────────────────────────────
 
 @api_router.put("/auth/onboard")
-async def onboard_user(data: OnboardingUpdate, authorization: str = None):
-    user = await get_current_user(authorization)
+async def onboard_user(data: OnboardingUpdate, current_user: dict = Depends(get_current_user)):
     await db.users.update_one(
-        {"id": user["id"]},
+        {"id": current_user["id"]},
         {"$set": {"job_title": data.job_title, "industry": data.industry, "onboarded": True}}
     )
-    await log_activity(user["id"], "onboarding_complete", f"Onboarded as {data.job_title} in {data.industry}")
+    await log_activity(current_user["id"], "onboarding_complete", f"Onboarded as {data.job_title} in {data.industry}")
     return {"status": "ok"}
 
 # ── Templates ───────────────────────────────────────────
